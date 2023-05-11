@@ -1,14 +1,15 @@
-import "./Login.css";
 import img from "../../assets/images/login/login.svg";
-import { FaFacebookF, FaGithub } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
-
-const Login = () => {
-  const handleLogin = (event) => {
+const SignUp = () => {
+  const handleSignUp = (event) => {
     event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const user = { name, email, password };
+    console.log(user);
   };
-
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
@@ -17,8 +18,20 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full lg:w-1/2 shadow-2xl bg-base-100 ">
           <div className="card-body">
-            <h1 className="text-center text-3xl font-bold">Login</h1>
-            <form onSubmit={handleLogin}>
+            <h1 className="text-center text-3xl font-bold">Sign Up</h1>
+            <form onSubmit={handleSignUp}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
@@ -49,23 +62,16 @@ const Login = () => {
                 </label>
               </div>
               <div className="form-control mt-6">
-                <input className="btn-login" type="submit" value="Login" />
+                <input className="btn-login" type="submit" value="Sign Up" />
               </div>
             </form>
-            <div className="text-center">
-              <h2>Or Sign In with</h2>
-              <div className="flex justify-center items-center gap-4 mt-3 mb-3">
-                <FaFacebookF className="text-blue-700 bg-slate-200 rounded-full" />
-                <FaGithub className="text-black bg-slate-200 rounded-full" />
-                <FcGoogle className="text-blue-700 bg-slate-200 rounded-full" />
-              </div>
-              <h2>
-                Have not any account?{" "}
-                <Link to="/signup">
-                  <span className="font-semibold text-[#FF3811]">Sign Up</span>
-                </Link>{" "}
-              </h2>
-            </div>
+
+            <h2 className="text-center">
+              Already have an account?{" "}
+              <Link to="/login">
+                <span className="font-semibold text-[#FF3811]">Login</span>
+              </Link>{" "}
+            </h2>
           </div>
         </div>
       </div>
@@ -73,4 +79,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
