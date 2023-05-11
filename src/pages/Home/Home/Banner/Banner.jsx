@@ -6,12 +6,12 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <div className="carousel w-full md:h-[600px]">
+    <div className="carousel w-full md:h-[600px] m-4">
       <div id="slide1" className="carousel-item relative w-full">
-        <img src={img1} className="w-full rounded-lg" />
+        <img src={img1} className="w-full rounded-xl" />
 
         {/* Banner texts-1 */}
-        <div className="absolute flex items-center pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+        <div className="absolute flex items-center rounded-xl pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white space-y-2 md:space-y-4 w-3/4 md:w-1/3">
             <h2 className="text-2xl md:text-4xl lg:text-5xl">
               Affordable Price For Car Servicing
@@ -37,9 +37,9 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide2" className="carousel-item relative w-full">
-        <img src={img2} className="w-full" />
+        <img src={img2} className="w-full rounded-xl" />
         {/* Banner texts-2 */}
-        <div className="absolute flex items-center pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+        <div className="absolute flex items-center rounded-xl pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white space-y-2 md:space-y-4 w-3/4 md:w-1/3">
             <h2 className="text-2xl md:text-4xl lg:text-5xl">
               Affordable Price For Car Servicing
@@ -64,9 +64,9 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide3" className="carousel-item relative w-full">
-        <img src={img3} className="w-full" />
+        <img src={img3} className="w-full rounded-xl" />
         {/* Banner texts-3 */}
-        <div className="absolute flex items-center pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+        <div className="absolute flex items-center rounded-xl pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white space-y-2 md:space-y-4 w-3/4 md:w-1/3">
             <h2 className="text-2xl md:text-4xl lg:text-5xl">
               Affordable Price For Car Servicing
@@ -91,9 +91,9 @@ const Banner = () => {
         </div>
       </div>
       <div id="slide4" className="carousel-item relative w-full">
-        <img src={img4} className="w-full" />
+        <img src={img4} className="w-full rounded-xl" />
         {/* Banner texts-4 */}
-        <div className="absolute flex items-center pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
+        <div className="absolute flex items-center rounded-xl pl-5 md:pl-10 lg:pl-28 transform h-full gap- bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
           <div className="text-white space-y-2 md:space-y-4 w-3/4 md:w-1/3">
             <h2 className="text-2xl md:text-4xl lg:text-5xl">
               Affordable Price For Car Servicing
