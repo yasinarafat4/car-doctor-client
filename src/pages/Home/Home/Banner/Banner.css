@@ -4,3 +4,16 @@
   border-radius: 50%;
   background-color: #ff3811;
 }
+
+.btn-discover {
+  padding: 10px 15px;
+  color: #ffffff;
+  background-color: #ff3811;
+  border-radius: 5px;
+}
+.btn-latest {
+  padding: 10px 15px;
+  color: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+}
