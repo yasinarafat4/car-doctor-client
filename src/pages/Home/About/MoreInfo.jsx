@@ -18,14 +18,14 @@ const MoreInfo = () => {
             buying, maintaining, and enjoying your car.
           </p>
           <p>
-            Whether you're in the market for a new or used car, we can help you
+            Whether you are in the market for a new or used car, we can help you
             find the perfect vehicle to fit your needs and budget. We offer a
             wide selection of cars, trucks, SUVs, and other vehicles from top
             brands like Ford, Chevrolet, Toyota, and more.
           </p>
 
           <p className="py-2">
-            But we're more than just a car dealership. We also offer a variety
+            But we are more than just a car dealership. We also offer a variety
             of services to help you keep your car running smoothly, including
             maintenance and repairs, financing, and trade-ins. Our experienced
             technicians are here to answer any questions you may have about your

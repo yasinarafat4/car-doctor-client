@@ -17,10 +17,10 @@ const About = () => {
           <div className="lg:w-1/2">
             <p className="font-bold text-lg text-[#ff3811]">About Us</p>
             <h1 className="text-4xl font-bold">
-              We are qualified & of experience in this field
+              We are qualified <br /> & of experience <br /> in this field
             </h1>
             <p className="py-2">
-              Welcome to our website! We're a team of car enthusiasts dedicated
+              Welcome to our website! We are a team of car enthusiasts dedicated
               to helping you find the perfect vehicle for your needs and budget.
               We offer a wide selection of cars, trucks, SUVs, and other
               vehicles from top brands, as well as expert maintenance and repair
@@ -28,8 +28,8 @@ const About = () => {
             </p>
             <p>
               At our dealership, we prioritize honesty, integrity, and quality
-              customer service. Whether you're in the market for a new or used
-              car, we're here to help you every step of the way.
+              customer service. Whether you are in the market for a new or used
+              car, we are here to help you every step of the way.
             </p>
             <p className="py-2">
               Thank you for choosing us as your trusted source for all things
