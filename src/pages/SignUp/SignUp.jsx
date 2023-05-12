@@ -1,15 +1,41 @@
+import { useContext } from "react";
 import img from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 const SignUp = () => {
+  const { createUser, userProfile } = useContext(AuthContext);
+
+  // sign up functionality
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const user = { name, email, password };
-    console.log(user);
+    console.log(name, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        updateUserProfile(name);
+      })
+      .then((error) => {
+        console.log(error);
+      });
   };
+
+  // updating user profile
+  const updateUserProfile = (name) => {
+    const profile = {
+      displayName: name,
+    };
+    userProfile(profile)
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content flex-col lg:flex-row">
