@@ -4,10 +4,11 @@ import { FaFacebookF, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+  const [error, setError] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -22,8 +23,14 @@ const Login = () => {
         console.log(user);
         form.reset();
       })
-      .then((error) => {
-        console.log(error);
+      .catch((error) => {
+        if (error.code === "auth/user-not-found") {
+          setError("User Not Found. Invalid email or password!!!");
+        } else if (error.code === "auth/wrong-password") {
+          setError("Wrong Password. Please try again!!!");
+        } else {
+          setError(error.message);
+        }
       });
   };
 
@@ -66,7 +73,8 @@ const Login = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <p className="text-red-600 text-sm m-1 font-semibold">{error}</p>
+              <div className="form-control">
                 <input className="btn-login" type="submit" value="Login" />
               </div>
             </form>

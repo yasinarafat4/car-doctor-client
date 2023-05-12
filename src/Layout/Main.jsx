@@ -1,8 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigation } from "react-router-dom";
 import Footer from "../pages/Shared/Footer/Footer";
 import Navbar from "../pages/Shared/Navbar/Navbar";
+import LoadingSpinner from "../pages/Shared/LoadinSpinner/LoadingSpinner";
 
 const Main = () => {
+  // loading spinner
+  const navigation = useNavigation();
+  if (navigation.state === "loading") {
+    return <LoadingSpinner></LoadingSpinner>;
+  }
+
   return (
     <div>
       <div className="max-w-6xl mx-auto">

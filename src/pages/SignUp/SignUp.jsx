@@ -1,12 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import img from "../../assets/images/login/login.svg";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 const SignUp = () => {
   const { createUser, userProfile } = useContext(AuthContext);
 
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
   // sign up functionality
   const handleSignUp = (event) => {
+    setError("");
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
@@ -18,11 +22,19 @@ const SignUp = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        setSuccess("User has created successfully");
         form.reset();
         updateUserProfile(name);
       })
-      .then((error) => {
-        console.log(error);
+      .catch((error) => {
+        if (error.code === "auth/email-already-in-use") {
+          setError("Email already used. Try with a new email!");
+        } else if (error.code === "auth/weak-password") {
+          setError("Password should be at least 6 characters!");
+        } else {
+          setError(error.message);
+        }
+        setSuccess("");
       });
   };
 
@@ -87,7 +99,11 @@ const SignUp = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control mt-6">
+              <p className="text-red-600 text-sm m-1 font-semibold">{error}</p>
+              <p className="text-green-700 text-sm m-1 font-semibold">
+                {success}
+              </p>
+              <div className="form-control ">
                 <input className="btn-login" type="submit" value="Sign Up" />
               </div>
             </form>

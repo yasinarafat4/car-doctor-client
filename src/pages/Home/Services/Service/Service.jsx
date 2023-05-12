@@ -4,6 +4,14 @@ import "./Service.css";
 
 const Service = () => {
   const [services, setServices] = useState([]);
+  const [numServicesToShow, setNumServicesToShow] = useState(3);
+
+  const handleMoreServices = () => {
+    setNumServicesToShow(numServicesToShow + 3);
+  };
+
+  const visibleServices = services.slice(0, numServicesToShow);
+
   useEffect(() => {
     fetch("services.json")
       .then((res) => res.json())
@@ -22,14 +30,21 @@ const Service = () => {
           service and exceeding our clients expectations.{" "}
         </p>
       </div>
-      <div className="grid grid-cols-3 gap-6">
-        {services.map((service) => (
+      <div className="md:grid md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-6">
+        {visibleServices.map((service) => (
           <ServicesCard key={service._id} service={service}></ServicesCard>
         ))}
       </div>
 
       <div className="text-center">
-        <button className="btn-more-services mt-12 mb-32">More Services</button>
+        {numServicesToShow < services.length && (
+          <button
+            onClick={handleMoreServices}
+            className="btn-more-services mt-12 mb-32"
+          >
+            More Services
+          </button>
+        )}
       </div>
     </div>
   );

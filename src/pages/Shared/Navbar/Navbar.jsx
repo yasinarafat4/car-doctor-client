@@ -1,8 +1,21 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.svg";
 import "./Navbar.css";
+import { FaUserCircle } from "react-icons/fa";
+import { TbLogout } from "react-icons/tb";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  // Logout functionality
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
     <>
       <li>
@@ -70,6 +83,19 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        {user ? (
+          <p onClick={handleLogOut} title="Logout" className="text-3xl mr-4">
+            <TbLogout />
+          </p>
+        ) : (
+          <Link to="/login">
+            {" "}
+            <p title="Login" className="text-3xl mr-4">
+              <FaUserCircle />
+            </p>
+          </Link>
+        )}
+
         <button className="btn-appointment">Appointment</button>
       </div>
     </div>
