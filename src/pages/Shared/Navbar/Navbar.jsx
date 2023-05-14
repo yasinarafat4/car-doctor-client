@@ -83,7 +83,7 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        {user ? (
+        {user?.email ? (
           <p onClick={handleLogOut} title="Logout" className="text-3xl mr-4">
             <TbLogout />
           </p>
@@ -96,7 +96,13 @@ const Navbar = () => {
           </Link>
         )}
 
-        <button className="btn-appointment">Appointment</button>
+        {user?.email ? (
+          <Link to="/bookings">
+            <button className="btn-appointment">Bookings Review</button>
+          </Link>
+        ) : (
+          <button className="btn-appointment">Appointment</button>
+        )}
       </div>
     </div>
   );

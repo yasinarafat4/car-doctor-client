@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const BookService = () => {
   const book = useLoaderData();
   console.log(book);
-  const { _id, price, title, img } = book;
+  const { title, _id, price, img } = book;
   const { user } = useContext(AuthContext);
 
   const handleBookService = (event) => {
@@ -68,7 +68,7 @@ const BookService = () => {
             </div>
             <div className="form-control mb-2 lg:mb-0">
               <input
-                type="email"
+                type="text"
                 name="email"
                 placeholder="Your Email"
                 className="input input-bordered"
