@@ -15,8 +15,9 @@ const Bookings = () => {
     fetch(url)
       .then((res) => res.json())
       .then((data) => setBookings(data));
-  }, []);
+  }, [url]);
 
+  // delete handler
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -44,6 +45,43 @@ const Bookings = () => {
     });
   };
 
+  // approve handler
+  const handleBookingApprove = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to approve this?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Approve it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/bookings/${id}`, {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({ status: "approve" }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.modifiedCount > 0) {
+              Swal.fire("Approved!", "Your file has been Approved.", "success");
+              const remaining = bookings.filter(
+                (booking) => booking._id !== id
+              );
+              const updated = bookings.find((booking) => booking._id === id);
+              updated.status = "approve";
+              const newBookings = [updated, ...remaining];
+              setBookings(newBookings);
+            }
+          });
+      }
+    });
+  };
+
   return (
     <div>
       <div className="overflow-x-auto w-full">
@@ -54,6 +92,7 @@ const Bookings = () => {
                 key={bookings._id}
                 booking={booking}
                 handleDelete={handleDelete}
+                handleBookingApprove={handleBookingApprove}
               ></BookingRow>
             ))}
           </tbody>
