@@ -70,11 +70,22 @@ const Checkout = () => {
           </div>
         </form>
       </div>
-      <Link to={`/book/${_id}`}>
-        <button title="Checkout" className="btn-discover">
-          Book Service
-        </button>
-      </Link>
+      <div className="flex justify-center gap-4 mb-4">
+        <div>
+          <Link to={`/details/${_id}`}>
+            <button title="Back to Checkout" className="btn-discover">
+              Back to Service Details
+            </button>
+          </Link>
+        </div>
+        <div>
+          <Link to={`/book/${_id}`}>
+            <button title="Book Service" className="btn-discover">
+              Book Service
+            </button>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };

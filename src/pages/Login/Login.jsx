@@ -7,7 +7,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import { useContext, useState } from "react";
 
 const Login = () => {
-  const { signIn } = useContext(AuthContext);
+  const { signIn, googleSignIn, githubSignIn } = useContext(AuthContext);
   const [error, setError] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,28 +24,9 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        const loggedUser = {
-          email: user.email,
-        };
-        console.log(loggedUser);
-
+        console.log(user);
         form.reset();
         navigate(from, { replace: true });
-
-        fetch("http://localhost:5000/jwt", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(loggedUser),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            console.log(data);
-
-            // Warning: Local storage is not the best (2nd best) to store access token
-            localStorage.setItem("car-access-token", data.token);
-          });
       })
       .catch((error) => {
         if (error.code === "auth/user-not-found") {
@@ -56,6 +37,30 @@ const Login = () => {
           setError(error.message);
         }
       });
+  };
+
+  // Google sign in
+  const handleGoogleSignIn = () => {
+    setError("");
+    googleSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => setError(error.message));
+  };
+
+  // GitHub sign in
+  const handleGitHubSignIn = () => {
+    setError("");
+    githubSignIn()
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error.message));
   };
 
   return (
@@ -103,11 +108,19 @@ const Login = () => {
               </div>
             </form>
             <div className="text-center">
-              <h2>Or Sign In with</h2>
+              <div className="flex flex-col w-full border-opacity-50">
+                <div className="divider">Or Sign In with</div>
+              </div>
               <div className="flex justify-center items-center gap-4 mt-3 mb-3">
-                <FaFacebookF className="text-blue-700 bg-slate-200 rounded-full" />
-                <FaGithub className="text-black bg-slate-200 rounded-full" />
-                <FcGoogle className="text-blue-700 bg-slate-200 rounded-full" />
+                <FaFacebookF className="text-blue-700 bg-slate-200 rounded-full cursor-pointer" />
+                <FaGithub
+                  onClick={handleGitHubSignIn}
+                  className="text-black bg-slate-200 rounded-full cursor-pointer "
+                />
+                <FcGoogle
+                  onClick={handleGoogleSignIn}
+                  className="text-blue-700 bg-slate-200 rounded-full cursor-pointer"
+                />
               </div>
               <h2>
                 Have not any account?{" "}

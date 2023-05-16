@@ -40,13 +40,17 @@ const router = createBrowserRouter([
         path: "/checkout/:id",
         element: <Checkout></Checkout>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-gamma-pied.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/details/:id",
         element: <ServiceDetails></ServiceDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-gamma-pied.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/book/:id",
@@ -56,7 +60,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/services/${params.id}`),
+          fetch(
+            `https://car-doctor-server-gamma-pied.vercel.app/services/${params.id}`
+          ),
       },
       {
         path: "/bookings",

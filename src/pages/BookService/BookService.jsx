@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from "sweetalert2";
 
@@ -30,7 +30,7 @@ const BookService = () => {
     console.log(booking);
 
     //sending data (POST method)
-    fetch("http://localhost:5000/bookings", {
+    fetch("https://car-doctor-server-gamma-pied.vercel.app/bookings", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -106,6 +106,11 @@ const BookService = () => {
             <input className="btn-discover" type="submit" value="Submit" />
           </div>
         </form>
+      </div>
+      <div className="text-center mb-4">
+        <Link to={`/checkout/${_id}`}>
+          <button className="btn-discover"> Back to Checkout</button>
+        </Link>
       </div>
     </div>
   );

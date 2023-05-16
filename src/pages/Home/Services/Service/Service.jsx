@@ -13,7 +13,7 @@ const Service = () => {
   const visibleServices = services.slice(0, numServicesToShow);
 
   useEffect(() => {
-    fetch("http://localhost:5000/services")
+    fetch("https://car-doctor-server-gamma-pied.vercel.app/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
